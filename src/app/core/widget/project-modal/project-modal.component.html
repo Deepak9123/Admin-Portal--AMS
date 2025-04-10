@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Create Project</h1>
+<hr>
+<div mat-dialog-content>
+  <form [formGroup]="projectForm">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Project Name</mat-label>
+        <mat-select formControlName="accountid">
+          <mat-option *ngFor="let project of accountList" [value]="project.accountid">
+            {{ project.accountid }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="projectForm.get('accountid')?.touched && projectForm.get('accountid')?.invalid">
+            Accountid is required
+        </mat-error>
+      </mat-form-field>
+      
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Project Name</mat-label>
+      <input matInput formControlName="projectname" />
+      <mat-error *ngIf="projectForm.get('projectname')?.touched && projectForm.get('projectname')?.invalid">
+        Project Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Projet Description</mat-label>
+      <input matInput formControlName="projectdescription" />
+      <mat-error *ngIf="projectForm.get('projectdescription')?.touched && projectForm.get('projectdescription')?.invalid">
+        Project Description is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Created By</mat-label>
+      <input matInput formControlName="created_by" />
+      <mat-error *ngIf="accountForm.get('created_by')?.touched && accountForm.get('created_by')?.invalid">
+        Created By is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Updated By</mat-label>
+      <input matInput formControlName="updated_by" />
+      <mat-error *ngIf="accountForm.get('updated_by')?.touched && accountForm.get('updated_by')?.invalid">
+        Updated By is required
+      </mat-error>
+    </mat-form-field> -->
+
+  </form>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button class="cancel-button" (click)="onNoClick()">Cancel</button>
+  <button mat-button class="create-button" (click)="onSubmit()" cdkFocusInitial>Create</button>
+</div>

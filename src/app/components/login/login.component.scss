@@ -1,0 +1,148 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base Theme */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #b9fbc0, #efffea);
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: #1b1b1b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15vh;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  letter-spacing: 1.2vw;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+/* Main Section */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Rottenburg_a.N._-_Wurmlingen_-_Kapellenberg_-_Ansicht_von_OSO_im_April_mit_Gegenlicht.jpg/1280px-Rottenburg_a.N._-_Wurmlingen_-_Kapellenberg_-_Ansicht_von_OSO_im_April_mit_Gegenlicht.jpg')
+    no-repeat center center;
+  background-size: cover;
+  padding: 20px;
+}
+
+/* Form Card */
+.form_card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  width: 400px;
+  max-width: 90%;
+}
+
+/* Form Structure */
+.form_div > label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+.required {
+  color: red;
+}
+
+.field_input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #999;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  background-color: #fdfdfd;
+  transition: 0.3s ease;
+}
+
+.field_input:focus {
+  border-color: #2e7d32;
+  outline: none;
+  box-shadow: 0 0 6px rgba(46, 125, 50, 0.5);
+  background-color: #f1fff1;
+}
+
+.error_text {
+  color: red;
+  font-size: 0.75rem;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+/* Button */
+.login_btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #ffe6d4;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.login_btn:hover {
+  background-color: #ffc49b;
+  transform: scale(1.02);
+}
+
+/* Footer */
+footer {
+  height: 10vh;
+  background-color: #1b1b1b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.8rem;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.3);
+}
+
+footer .heart {
+  animation: blink 1.5s infinite;
+}
+
+/* Blinking Heart */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Responsive Tweaks */
+@media screen and (max-width: 500px) {
+  .form_card {
+    padding: 25px;
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    letter-spacing: 0.8vw;
+  }
+}

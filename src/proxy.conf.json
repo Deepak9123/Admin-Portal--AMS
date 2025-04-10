@@ -1,0 +1,13 @@
+{
+    "/Retrieve.ashx/ProcessRequest": {
+      "target": "http://172.17.17.215:17450",
+      "secure": false,
+      "changeOrigin": true
+    },
+    "/Save.ashx/ProcessRequest": {
+      "target": "http://172.17.17.215:17450",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
+  

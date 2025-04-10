@@ -1,0 +1,100 @@
+.side-nav,
+.user-side-nav {
+  position: fixed;
+  z-index: 1;
+  top: 56px; /* header height */
+  width: 64px;
+  height: calc(100vh - 56px);
+  background-color: #f5f5f5;
+  box-shadow: 1px 0 6px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.side-nav:hover,
+.user-side-nav:hover {
+  width: 240px;
+  overflow: visible;
+}
+
+/* Sidebar Menu Items */
+.side-nav-menu,
+.user-side-nav .side-nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-nav-menu li {
+  width: 100%;
+}
+
+.side-nav-menu li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  border-left: 4px solid transparent;
+  transition: background-color 0.2s ease, border-left 0.2s ease, color 0.2s ease;
+}
+
+.side-nav-menu li a i {
+  font-size: 20px;
+  margin-right: 16px;
+  color: #1d7a85;
+}
+
+.side-nav-menu li a span {
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.side-nav:hover .side-nav-menu li a span {
+  opacity: 1;
+}
+
+/* Active & Hover States */
+.side-nav-menu li a:hover,
+.side-nav-menu li.active a {
+  background-color: #e0f2f1;
+  border-left: 4px solid #1d7a85;
+  color: #1d7a85;
+}
+
+.side-nav-menu li a:hover i,
+.side-nav-menu li.active a i {
+  color: #1d7a85;
+}
+
+/* Optional Section Title */
+.side-nav-section-title {
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #666;
+  font-size: 13px;
+}
+
+/* Sub Item (Optional Styling) */
+.sub-li {
+  color: #000;
+  padding-left: 40px;
+  font-size: 13px;
+}
+
+.sub-li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Optional Collapse Indicator */
+.collapse-icon {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.collapsed .collapse-icon {
+  transform: rotate(-90deg);
+}

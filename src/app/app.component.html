@@ -1,0 +1,10 @@
+<ngx-ui-loader ></ngx-ui-loader>
+@if (showSidebar) {
+  <app-sidebar id="sidebar1"></app-sidebar>
+}
+@if (showHead) {
+  <app-header></app-header>
+}
+<main id="main" class="main mat-typography" [ngClass]="{ shrink: isShrink }">
+  <router-outlet></router-outlet>
+</main>

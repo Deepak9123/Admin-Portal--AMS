@@ -1,0 +1,44 @@
+<body>
+  <header>
+    <h1>Admin Login</h1>
+  </header>
+
+  <main>
+    <form [formGroup]="loginData" class="form_card">
+      <div class="form_div">
+        <label>Email ID <sup class="required">*</sup></label>
+        <input
+          class="field_input"
+          type="text"
+          placeholder="Enter your email"
+          formControlName="userId"
+          autofocus />
+        <div *ngIf="loginFormSubmitted && loginData.get('userId')?.invalid" class="error_text">
+          Please enter a valid email ID
+        </div>
+
+        <label>Password <sup class="required">*</sup></label>
+        <input
+          class="field_input"
+          type="password"
+          placeholder="Password"
+          formControlName="password" />
+        <div *ngIf="loginFormSubmitted && loginData.get('password')?.invalid" class="error_text">
+          Please enter a valid Password
+        </div>
+
+        <button type="button" class="login_btn" (click)="adminLogIn()">Enter</button>
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    <span class="copyright">
+      <span style="font-size: 10px;">
+        Version: AMS - (Admin Portal).V.1.1 | Year: 2025 | Best viewed in Firefox, Google Chrome and Microsoft Edge
+      </span>
+      © {{ loginPageDateTime }}, made with
+      <i style="color: red" class="fa fa-heart heart"></i> by sevysis
+    </span>
+  </footer>
+</body>
