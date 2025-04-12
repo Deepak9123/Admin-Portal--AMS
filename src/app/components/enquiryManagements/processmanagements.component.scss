@@ -159,4 +159,20 @@
     background-color: #0288d1;
     color: #fff;
   }
-      
+  table mat-icon {
+    font-size: 20px;
+    vertical-align: middle;
+  }
+  .styled-input {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 140px;
+    box-sizing: border-box;
+  }
+  
+  td {
+    vertical-align: middle;
+  }
+  

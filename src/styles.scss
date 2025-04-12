@@ -422,3 +422,32 @@ h6 {
   font-size: 14px;
   text-align: left;
 }
+
+
+/* Styles to keep table clean and horizontally scrollable */
+table th, table td {
+  white-space: nowrap;          /* Prevent line breaks */
+  text-overflow: ellipsis;      /* Truncate overflowed text */
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+table input {
+  width: 150px;                 /* Set a consistent width */
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+table {
+  table-layout: auto;           /* Allow columns to grow naturally */
+  width: max-content;           /* Grow table horizontally to fit content */
+  min-width: 100%;              /* Prevent table from shrinking too much */
+}
+
+.custom-snackbar-success {
+  background-color: #e8f5e9 !important;
+  color: #2e7d32 !important;
+  border-left: 5px solid #43a047;
+}
