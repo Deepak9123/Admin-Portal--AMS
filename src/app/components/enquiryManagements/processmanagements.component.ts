@@ -18,6 +18,7 @@ import { MatLibraryModule } from '../../modules/mat-library.module';
 })
 export class ProcessmanagementsComponent {
   panelOpenState = false;
+  baseUrl: String = 'http://localhost:6600/';
 
   constructor(
     private http: HttpClient,
@@ -77,28 +78,24 @@ export class ProcessmanagementsComponent {
     enquiry.editing = true;
     this.originalDataMap[enquiry.enquiryFormId] = JSON.parse(
       JSON.stringify(enquiry)
-    ); // Deep copy
+    );
   }
 
   cancelEdit(enquiry: any) {
     const original = this.originalDataMap[enquiry.enquiryFormId];
     if (original) {
-      Object.assign(enquiry, original); // Restore fields
+      Object.assign(enquiry, original);
       enquiry.editing = false;
       delete this.originalDataMap[enquiry.enquiryFormId];
     }
   }
   async saveEdit(enquiry: any) {
-    // Disable editing mode
     enquiry.editing = false;
-
-    // Prepare the updated enquiry data
     const updatedEnquiry = { ...enquiry };
 
-    // Call the update API directly in the component
     await this.http
       .put<any>(
-        'http://localhost:6600/AMS/enquiry/v1/updateEnquiryForm',
+        this.baseUrl + 'AMS/enquiry/v1/updateEnquiryForm',
         updatedEnquiry
       )
       .subscribe(
@@ -132,7 +129,7 @@ export class ProcessmanagementsComponent {
     };
 
     await this.http
-      .get<any>('http://localhost:6600/AMS/enquiry/v1/enquiry/list', { params })
+      .get<any>(this.baseUrl + 'AMS/enquiry/v1/enquiry/list', { params })
       .subscribe((res) => {
         if (res.status === 200) {
           this.enquiryList = res.data.map((e: any) => ({
@@ -171,12 +168,8 @@ export class ProcessmanagementsComponent {
     };
     this.snackBar.open(message, 'Close', config);
   }
+
   exportData() {
-    console.log(this.selectAll);
-    console.log(this.enquiryList);
-
-    return;
-
     let params = {
       enquiryFormId: this.filter.enquiryFormId,
       studentName: this.filter.studentName,
@@ -184,19 +177,16 @@ export class ProcessmanagementsComponent {
       page: this.pageIndex,
       limit: 50000,
     };
-
-    // Call the API with filters applied
     this.exportDataWithFilters(params);
   }
 
   // API call to get filtered data and export it
   exportDataWithFilters(params: any) {
     this.http
-      .get<any>('http://localhost:6600/AMS/enquiry/v1/enquiry/list', { params })
+      .get<any>(this.baseUrl + 'AMS/enquiry/v1/enquiry/list', { params })
       .subscribe(
         (res) => {
           if (res.status === 200) {
-            // Export the data (you could call your Excel generation method here)
             this.generateExcel(res.data);
           } else {
             console.error('Export failed:', res.message);

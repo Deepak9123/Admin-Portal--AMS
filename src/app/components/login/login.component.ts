@@ -71,17 +71,11 @@ export class LoginComponent {
     );
 
     if (!matchedAdmin) {
-      // this.snackBar.open('Invalid Email or Password', 'Close', {
-      //   duration: 3000,
-      //   panelClass: 'snackbar-error',
-      // });
-
       const errorMsg = 'Invalid Email or Password';
       this.showError(errorMsg);
       return;
     }
 
-    // ✅ Successful Login
     sessionStorage.setItem('isLoggedIn', 'true');
     sessionStorage.setItem('userEmail', enteredEmail);
     this.snackBar.open('Login Successful', 'Close', {

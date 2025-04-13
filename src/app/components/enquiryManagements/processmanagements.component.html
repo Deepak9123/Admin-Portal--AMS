@@ -46,7 +46,7 @@
           <div>
             <button class="btn btn-outline-success me-2" (click)="exportData()">Export</button>
 
-            <a class="btn btn-outline-primary" href="http://localhost:4200/#/" target="_blank">Add</a>
+            <a class="btn btn-outline-primary" href="http://localhost:4200/#/" target="_blank">Add New</a>
 
             <!-- <button class="btn btn-outline-primary" href="http://localhost:4200/#/" >Create</button> -->
           </div>
@@ -84,15 +84,18 @@
                 <th>Passport Photo</th>
                 <th>Family Photo</th>
                 <th>Created At</th>
+                <th>Admission Status</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
+          
             <tbody>
               <tr *ngFor="let enquiry of enquiryList; let i = index">
                 <!-- Select -->
                 <td>
                   <mat-checkbox [(ngModel)]="enquiry.selected"></mat-checkbox>
                 </td>
-            
+          
                 <!-- Actions -->
                 <td>
                   <ng-container *ngIf="!enquiry.editing; else editActions">
@@ -109,18 +112,17 @@
                     </button>
                   </ng-template>
                 </td>
-            
+          
                 <!-- Serial Number -->
                 <td>{{ i + 1 + (pageIndex - 1) * pageSize }}</td>
-            
+          
                 <!-- Enquiry ID -->
                 <td>{{ enquiry.enquiryFormId }}</td>
-            
+          
                 <!-- Editable Fields -->
                 <ng-container *ngFor="let field of editableFields">
                   <td>
                     <ng-container *ngIf="!enquiry.editing; else editField">
-                      <!-- Display DOB with readable format -->
                       <ng-container *ngIf="field === 'dob'">
                         {{ enquiry[field] | date: 'dd/MM/yyyy' }}
                       </ng-container>
@@ -128,11 +130,10 @@
                         {{ enquiry[field] }}
                       </ng-container>
                     </ng-container>
-            
+          
                     <ng-template #editField>
                       <ng-container *ngIf="field === 'dob'; else normalInput">
-                        <!-- Ensure the date is formatted correctly for editing -->
-                        <input type="date" [(ngModel)]="enquiry[field]" class="styled-input" [value]="enquiry[field] | date: 'yyyy-MM-dd'" />
+                        <input type="date" [(ngModel)]="enquiry[field]" class="styled-input" />
                       </ng-container>
                       <ng-template #normalInput>
                         <input [(ngModel)]="enquiry[field]" class="styled-input" />
@@ -140,27 +141,55 @@
                     </ng-template>
                   </td>
                 </ng-container>
-            
+          
                 <!-- Passport Photo -->
                 <td>
                   <a [href]="enquiry.passportPhoto" target="_blank">
                     <mat-icon>visibility</mat-icon>
                   </a>
                 </td>
-            
+          
                 <!-- Family Photo -->
                 <td>
                   <a [href]="enquiry.familyPhoto" target="_blank">
                     <mat-icon>visibility</mat-icon>
                   </a>
                 </td>
-            
+          
                 <!-- Created At -->
                 <td>{{ enquiry.createdAt | date: 'short' }}</td>
+          
+                <!-- Admission Status -->
+                <td>
+                  <ng-container *ngIf="!enquiry.editing; else admissionDropdown">
+                    {{ enquiry.admissionStatus }}
+                  </ng-container>
+                  <ng-template #admissionDropdown>
+                    <select [(ngModel)]="enquiry.admissionStatus" class="styled-input">
+                      <option value="Pending">Pending</option>
+                      <option value="Admitted">Admitted</option>
+                      <option value="Rejected">Rejected</option>
+                    </select>
+                  </ng-template>
+                </td>
+          
+                <!-- Payment Status -->
+                <td>
+                  <ng-container *ngIf="!enquiry.editing; else paymentDropdown">
+                    {{ enquiry.paymentStatus }}
+                  </ng-container>
+                  <ng-template #paymentDropdown>
+                    <select [(ngModel)]="enquiry.paymentStatus" class="styled-input">
+                      <option value="Not Receive">Not Receive</option>
+                      <option value="Partial">Partial</option>
+                      <option value="Received">Received</option>
+                    </select>
+                  </ng-template>
+                </td>
               </tr>
             </tbody>
-            
           </table>
+          
         </div>
         
         
