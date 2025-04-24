@@ -205,4 +205,13 @@ export class ProcessmanagementsComponent {
     XLSX.utils.book_append_sheet(wb, ws, 'Enquiry Data');
     XLSX.writeFile(wb, 'Enquiry_Export' + '_' + Date.now() + '.xlsx');
   }
+
+  getEnquiryFormUrl(): string {
+    if (window.location.hostname === 'localhost') {
+      return 'http://localhost:4200/#/AMS/enquiryForm';
+    }
+  
+    return 'http://195.35.7.63/enquiry-form/#/AMS/enquiryForm';
+  }  
+  
 }
