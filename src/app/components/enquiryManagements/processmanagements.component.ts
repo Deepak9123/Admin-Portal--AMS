@@ -207,11 +207,14 @@ export class ProcessmanagementsComponent {
   }
 
   getEnquiryFormUrl(): string {
-    if (window.location.hostname === 'localhost') {
+    const hostname = window.location.hostname;
+    const protocol = window.location.protocol;
+  
+    if (hostname === 'localhost') {
       return 'http://localhost:4200/#/AMS/enquiryForm';
     }
   
-    return 'http://195.35.7.63/enquiry-form/#/AMS/enquiryForm';
+    return `${protocol}//${hostname}/enquiry-form/#/AMS/enquiryForm`;
   }  
   
 }
