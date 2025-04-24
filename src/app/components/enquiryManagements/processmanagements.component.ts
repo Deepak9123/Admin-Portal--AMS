@@ -207,14 +207,16 @@ export class ProcessmanagementsComponent {
   }
 
   getEnquiryFormUrl(): string {
-    const hostname = window.location.hostname;
-    const protocol = window.location.protocol;
-  
-    if (hostname === 'localhost') {
+    // Dynamically check if we're running in a production environment or local
+    const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+    
+    if (isProduction) {
+      // Return the VPS URL in production
+      return 'http://195.35.7.63/enquiry-form/#/AMS/enquiryForm';
+    } else {
+      // Return the local URL in development
       return 'http://localhost:4200/#/AMS/enquiryForm';
     }
-  
-    return `${protocol}//${hostname}/enquiry-form/#/AMS/enquiryForm`;
   }  
   
 }
